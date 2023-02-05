@@ -1,15 +1,8 @@
 html,
 body,
-#root,
-.app,
-.content {
+#root {
   height: 100%;
   width: 100%;
-}
-
-.app {
-  display: flex;
-  position: relative;
 }
 
 /* Scrollbar */
@@ -35,11 +28,8 @@ body {
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
-
-  background: url("../styles/images/blob/Ellipse2_tablet.png") no-repeat 100% 0,
-    url("../styles/images/blob/Ellipse1_tablet.png") no-repeat 0 100%;
-  background-color: #f5fffa;
-  background-attachment: fixed;
+  background-color: #0a192f;
+  color: #ccd6f6;
 }
 img {
   display: block;
