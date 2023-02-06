@@ -1,9 +1,6 @@
 import { useState } from "react";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
-import { Link } from "react-router-dom";
-import "react-pro-sidebar/dist/css/styles.css";
-
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
 import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
 import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
@@ -11,6 +8,8 @@ import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined
 import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
 import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import "react-pro-sidebar/dist/css/styles.css";
+import Item from "./SidebarItem";
 
 export default function Sidebar() {
   const theme = useTheme();
@@ -28,7 +27,7 @@ export default function Sidebar() {
           backgroundColor: "transparent !important",
         },
         "& .pro-menu-item": {
-          margin: "0 0 20px 0 !important",
+          margin: "0 0 10px 0 !important",
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
@@ -163,22 +162,5 @@ export default function Sidebar() {
         </Menu>
       </ProSidebar>
     </Box>
-  );
-}
-
-function Item({ title, to, icon, selected, setSelected }) {
-  const theme = useTheme();
-  return (
-    <MenuItem
-      active={selected === title}
-      style={{
-        color: `${theme.palette.primary.dark}`,
-      }}
-      onClick={() => setSelected(title)}
-      icon={icon}
-    >
-      <Typography>{title}</Typography>
-      <Link to={to} />
-    </MenuItem>
   );
 }

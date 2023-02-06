@@ -1,4 +1,4 @@
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Badge } from "@mui/material";
 import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
@@ -10,7 +10,9 @@ export default function Appbar() {
       <ContactPhoneIcon fontSize="large" color="secondary" />
       <Box display="flex">
         <IconButton size="large" color="secondary">
-          <NotificationsOutlinedIcon />
+          <Badge badgeContent={1} color="error">
+            <NotificationsOutlinedIcon />
+          </Badge>
         </IconButton>
         <IconButton size="large" color="secondary">
           <SettingsOutlinedIcon />
