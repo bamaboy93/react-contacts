@@ -6,7 +6,7 @@ import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
 
 export default function Appbar() {
   return (
-    <Box display="flex" justifyContent="space-between" p={2}>
+    <Box display="flex" justifyContent="space-between" p={2} pl={4}>
       <ContactPhoneIcon fontSize="large" color="secondary" />
       <Box display="flex">
         <IconButton size="large" color="secondary">

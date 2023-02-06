@@ -5,7 +5,7 @@ export const theme = createTheme({
     mode: "dark",
 
     common: {
-      white: "#ccd6f6",
+      white: "#fff",
     },
     primary: {
       dark: "#8892b0",
@@ -13,7 +13,9 @@ export const theme = createTheme({
       light: "#a8b2d1",
     },
     secondary: {
+      dark: "#555eff",
       main: "#6870fa",
+      light: "#999ffc",
     },
 
     background: {
@@ -54,6 +56,15 @@ export const theme = createTheme({
       fontFamily: ["Roboto", "sans-serif"].join(","),
       fontWeight: 700,
       fontSize: 14,
+    },
+  },
+  components: {
+    MuiPicker: {
+      styleOverrides: {
+        paper: {
+          backgroundColor: "#191919",
+        },
+      },
     },
   },
 });

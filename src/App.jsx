@@ -5,6 +5,7 @@ import Contacts from "./views/Contacts";
 import AddContact from "./views/AddContact";
 import Calendar from "./views/Calendar";
 import Faq from "./views/Faq";
+import NotFound from "./views/NotFound";
 
 export default function App() {
   return (
@@ -16,7 +17,7 @@ export default function App() {
           <Route path="add" element={<AddContact />} />
           <Route path="calendar" element={<Calendar />} />
           <Route path="faq" element={<Faq />} />
-          <Route path="*" element={<div>Oops 404!</div>} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

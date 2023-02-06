@@ -27,8 +27,8 @@ export default function Sidebar() {
         "& .pro-icon-wrapper": {
           backgroundColor: "transparent !important",
         },
-        "& .pro-inner-item": {
-          padding: "5px 35px 5px 20px !important",
+        "& .pro-menu-item": {
+          margin: "0 0 20px 0 !important",
         },
         "& .pro-inner-item:hover": {
           color: "#868dfb !important",
