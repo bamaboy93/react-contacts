@@ -1,4 +1,5 @@
 import { Box } from "@mui/material";
+
 import ContactsGrid from "../../components/ContactsGrid";
 import Header from "../../components/Header";
 

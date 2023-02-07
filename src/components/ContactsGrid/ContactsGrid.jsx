@@ -1,9 +1,9 @@
 import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { contacts } from "../../data/contacts";
+
 import { useTheme } from "@mui/material";
 
-export default function ContactsGrid() {
+export default function ContactsGrid({ contacts }) {
   const theme = useTheme();
 
   const columns = [
@@ -69,7 +69,7 @@ export default function ContactsGrid() {
       }}
     >
       <DataGrid
-        rows={contacts}
+        rows={""}
         columns={columns}
         components={{ Toolbar: GridToolbar }}
       />

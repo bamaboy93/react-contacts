@@ -13,7 +13,7 @@ import Item from "./SidebarItem";
 
 export default function Sidebar() {
   const theme = useTheme();
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
@@ -56,10 +56,7 @@ export default function Sidebar() {
                 alignItems="center"
                 ml="15px"
               >
-                <Typography
-                  variant="h5"
-                  color={`${theme.palette.primary.dark}`}
-                >
+                <Typography variant="h5" color="primary.dark">
                   Contacts
                 </Typography>
                 <IconButton
@@ -78,11 +75,7 @@ export default function Sidebar() {
                 <Avatar>U</Avatar>
               </Box>
               <Box textAlign="center">
-                <Typography
-                  variant="h2"
-                  color={`${theme.palette.primary.main}`}
-                  sx={{ mt: 3 }}
-                >
+                <Typography variant="h2" color="primary.main" sx={{ mt: 3 }}>
                   Username
                 </Typography>
               </Box>
@@ -100,7 +93,7 @@ export default function Sidebar() {
 
             <Typography
               variant="h6"
-              color={`${theme.palette.primary.main}`}
+              color="primary.main"
               sx={{ m: "15px 0 5px 20px" }}
             >
               Data
@@ -123,7 +116,7 @@ export default function Sidebar() {
 
             <Typography
               variant="h6"
-              color={`${theme.palette.primary.main}`}
+              color="primary.main"
               sx={{ m: "15px 0 5px 20px" }}
             >
               Pages
@@ -146,7 +139,7 @@ export default function Sidebar() {
 
             <Typography
               variant="h6"
-              color={`${theme.palette.primary.main}`}
+              color="primary.main"
               sx={{ m: "15px 0 5px 20px" }}
             >
               Charts

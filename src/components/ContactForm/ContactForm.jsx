@@ -3,14 +3,20 @@ import { Formik } from "formik";
 import * as yup from "yup";
 
 export default function ContactForm() {
-  const phoneRegExp =
-    /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/;
-
   const checkoutSchema = yup.object().shape({
-    name: yup.string().required("required"),
+    name: yup
+      .string()
+      .matches(
+        "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
+        "Name is not valid"
+      )
+      .required("required"),
     number: yup
       .string()
-      .matches(phoneRegExp, "Phone number is not valid")
+      .matches(
+        /^((\+[1-9]{1,4}[ -]?)|(\([0-9]{2,3}\)[ -]?)|([0-9]{2,4})[ -]?)*?[0-9]{3,4}[ -]?[0-9]{3,4}$/,
+        "Phone number is not valid"
+      )
       .required("required"),
   });
   const initialValues = {
@@ -40,6 +46,7 @@ export default function ContactForm() {
           <Box display="grid" gap="30px">
             <TextField
               fullWidth
+              title="Name can only contain letters, an apostrophe, a dash, and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan, etc."
               variant="filled"
               type="text"
               label="Name"
@@ -54,6 +61,7 @@ export default function ContactForm() {
 
             <TextField
               fullWidth
+              title="Phone number must be numeric and may contain spaces, dashes, parentheses, and may begin with a +."
               variant="filled"
               type="text"
               label="Number"

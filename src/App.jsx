@@ -6,6 +6,8 @@ import AddContact from "./views/AddContact";
 import Calendar from "./views/Calendar";
 import Faq from "./views/Faq";
 import NotFound from "./views/NotFound";
+import SignUp from "./views/SignUp";
+import Login from "./views/Login";
 
 export default function App() {
   return (
@@ -19,6 +21,8 @@ export default function App() {
           <Route path="faq" element={<Faq />} />
           <Route path="*" element={<NotFound />} />
         </Route>
+        <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
       </Routes>
     </>
   );
