@@ -1,10 +1,15 @@
 import { Box, Button } from "@mui/material";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-
 import { useTheme } from "@mui/material";
+import {
+  useGetContactsQuery,
+  useDeleteContactMutation,
+} from "../../redux/contacts/contactsSlice";
 
 export default function ContactsGrid({ contacts }) {
   const theme = useTheme();
+  const { data, error, isLoading } = useGetContactsQuery();
+  const [deleteContact] = useDeleteContactMutation();
 
   const columns = [
     { field: "id", headerName: "ID", flex: 0.5 },
@@ -27,7 +32,11 @@ export default function ContactsGrid({ contacts }) {
       flex: 0.5,
 
       renderCell: () => {
-        return <Button color="error">Delete</Button>;
+        return (
+          <Button onClick={deleteContact(data.id)} color="error">
+            Delete
+          </Button>
+        );
       },
     },
   ];
@@ -69,7 +78,7 @@ export default function ContactsGrid({ contacts }) {
       }}
     >
       <DataGrid
-        rows={""}
+        rows={0}
         columns={columns}
         components={{ Toolbar: GridToolbar }}
       />

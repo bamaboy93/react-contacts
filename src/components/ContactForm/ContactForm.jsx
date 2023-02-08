@@ -1,8 +1,10 @@
 import { Box, Button, TextField } from "@mui/material";
 import { Formik } from "formik";
 import * as yup from "yup";
+import { useAddContactMutation } from "../../redux/contacts/contactsSlice";
 
 export default function ContactForm() {
+  const [addContact] = useAddContactMutation();
   const checkoutSchema = yup.object().shape({
     name: yup
       .string()
@@ -24,13 +26,17 @@ export default function ContactForm() {
     number: "",
   };
 
-  const handleFormSubmit = (values) => {
-    console.log(values);
+  const handleAddContact = async (values) => {
+    try {
+      await addContact(values);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <Formik
-      onSubmit={handleFormSubmit}
+      onSubmit={handleAddContact}
       initialValues={initialValues}
       validationSchema={checkoutSchema}
     >
