@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Main } from "./Layout.styled";
@@ -10,7 +11,9 @@ export default function Layout() {
       <Sidebar />
       <Main>
         <Appbar />
-        <Outlet />
+        <Suspense fallback={null}>
+          <Outlet />
+        </Suspense>
       </Main>
     </Box>
   );

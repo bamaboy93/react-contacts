@@ -11,7 +11,7 @@ import { LinearProgress } from "@mui/material";
 const Dashboard = lazy(() => import("./views/Dashboard"));
 const Contacts = lazy(() => import("./views/Contacts"));
 const AddContact = lazy(() => import("./views/AddContact"));
-const Calendar = lazy(() => import("./views/Calendar"));
+const CalendarView = lazy(() => import("./views/CalendarView"));
 const Faq = lazy(() => import("./views/Faq"));
 const NotFound = lazy(() => import("./views/NotFound"));
 const SignUp = lazy(() => import("./views/SignUp"));
@@ -25,63 +25,59 @@ export default function App() {
     dispatch(fetchCurrentUser());
   }, [dispatch]);
 
-  return (
-    !isRefreshing && (
-      <Suspense fallback={<LinearProgress />}>
-        <Routes>
-          <Route path="/" element={<Layout />}>
-            <Route
-              index
-              element={
-                <PrivateRoute component={<Dashboard />} redirectTo={"/login"} />
-              }
-            />
-            <Route
-              path="contacts"
-              element={
-                <PrivateRoute component={<Contacts />} redirectTo={"/login"} />
-              }
-            />
-            <Route
-              path="add"
-              element={
-                <PrivateRoute
-                  component={<AddContact />}
-                  redirectTo={"/login"}
-                />
-              }
-            />
-            <Route
-              path="calendar"
-              element={
-                <PrivateRoute component={<Calendar />} redirectTo={"/login"} />
-              }
-            />
-            <Route
-              path="faq"
-              element={
-                <PrivateRoute component={<Faq />} redirectTo={"/login"} />
-              }
-            />
-            <Route
-              path="*"
-              element={
-                <PrivateRoute component={<NotFound />} redirectTo={"/login"} />
-              }
-            />
-          </Route>
+  return isRefreshing ? (
+    <LinearProgress />
+  ) : (
+    <Suspense fallback={null}>
+      <Routes>
+        <Route path="/" element={<Layout />}>
           <Route
-            path="signup"
+            index
             element={
-              <RestrictedRoute component={<SignUp />} redirectTo={"/"} />
+              <PrivateRoute component={<Dashboard />} redirectTo={"/login"} />
             }
           />
           <Route
-            path="login"
-            element={<RestrictedRoute component={<Login />} redirectTo={"/"} />}
+            path="contacts"
+            element={
+              <PrivateRoute component={<Contacts />} redirectTo={"/login"} />
+            }
           />
-        </Routes>
-      </Suspense>
-    )
+          <Route
+            path="add"
+            element={
+              <PrivateRoute component={<AddContact />} redirectTo={"/login"} />
+            }
+          />
+          <Route
+            path="calendar"
+            element={
+              <PrivateRoute
+                component={<CalendarView />}
+                redirectTo={"/login"}
+              />
+            }
+          />
+          <Route
+            path="faq"
+            element={<PrivateRoute component={<Faq />} redirectTo={"/login"} />}
+          />
+          <Route
+            path="*"
+            element={
+              <PrivateRoute component={<NotFound />} redirectTo={"/login"} />
+            }
+          />
+        </Route>
+        <Route
+          path="signup"
+          element={<RestrictedRoute component={<SignUp />} redirectTo={"/"} />}
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute component={<Login />} redirectTo={"/"} />}
+        />
+      </Routes>
+    </Suspense>
   );
 }
