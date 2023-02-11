@@ -2,8 +2,8 @@ import { lazy, Suspense, useEffect } from "react";
 import { Route, Routes } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import Layout from "./views/Layout";
-import RestrictedRoute from "./components/RestrictedRoute";
-import PrivateRoute from "./components/PrivateRoute";
+import RestrictedRoute from "./components/Routes/RestrictedRoute";
+import PrivateRoute from "./components/Routes/PrivateRoute";
 import { fetchCurrentUser } from "./redux/auth/auth-operations";
 import { useAuth } from "./hooks/useAuth";
 import { LinearProgress } from "@mui/material";
@@ -32,7 +32,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
-            index
+            path="dashboard"
             element={
               <PrivateRoute component={<Dashboard />} redirectTo={"/login"} />
             }
@@ -71,11 +71,15 @@ export default function App() {
         </Route>
         <Route
           path="signup"
-          element={<RestrictedRoute component={<SignUp />} redirectTo={"/"} />}
+          element={
+            <RestrictedRoute component={<SignUp />} redirectTo={"/dashboard"} />
+          }
         />
         <Route
           path="login"
-          element={<RestrictedRoute component={<Login />} redirectTo={"/"} />}
+          element={
+            <RestrictedRoute component={<Login />} redirectTo={"/dashboard"} />
+          }
         />
       </Routes>
     </Suspense>

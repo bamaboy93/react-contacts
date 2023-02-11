@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
 import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
 import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
@@ -10,9 +11,11 @@ import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import "react-pro-sidebar/dist/css/styles.css";
 import Item from "./SidebarItem";
+import { getUser } from "../../redux/auth/auth-selectors";
 
 export default function Sidebar() {
   const theme = useTheme();
+  const username = useSelector(getUser);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
 
@@ -75,9 +78,15 @@ export default function Sidebar() {
                 <Avatar>U</Avatar>
               </Box>
               <Box textAlign="center">
-                <Typography variant="h2" color="primary.main" sx={{ mt: 3 }}>
-                  Username
-                </Typography>
+                {username ? (
+                  <Typography variant="h2" color="primary.main" sx={{ mt: 3 }}>
+                    {username}
+                  </Typography>
+                ) : (
+                  <Typography variant="h2" color="primary.main" sx={{ mt: 3 }}>
+                    Username
+                  </Typography>
+                )}
               </Box>
             </Box>
           )}
@@ -85,7 +94,7 @@ export default function Sidebar() {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/"
+              to="/dashboard"
               icon={<HomeOutlinedIcon />}
               selected={selected}
               setSelected={setSelected}

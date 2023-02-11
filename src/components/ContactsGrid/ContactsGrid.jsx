@@ -1,45 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Box, Button } from "@mui/material";
+import { toast } from "react-toastify";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
 import { useTheme } from "@mui/material";
-import {
-  useGetContactsQuery,
-  useDeleteContactMutation,
-} from "../../redux/contacts/contactsSlice";
+import { selectAllContacts } from "../../redux/contacts/contacts-selectors";
+import { deleteContact } from "../../redux/contacts/contacts-operations";
 
-export default function ContactsGrid({ contacts }) {
+export default function ContactsGrid() {
   const theme = useTheme();
-  const { data, error, isLoading } = useGetContactsQuery();
-  const [deleteContact] = useDeleteContactMutation();
+  const dispatch = useDispatch();
+  const contacts = useSelector(selectAllContacts);
 
-  const columns = [
-    { field: "id", headerName: "ID", flex: 0.5 },
-
-    {
-      field: "name",
-      headerName: "Name",
-      flex: 1,
-      cellClassName: "name-column--cell",
-    },
-
-    {
-      field: "number",
-      headerName: "Phone Number",
-      flex: 1,
-    },
-
-    {
-      headerName: "Delete",
-      flex: 0.5,
-
-      renderCell: () => {
-        return (
-          <Button onClick={deleteContact(data.id)} color="error">
-            Delete
-          </Button>
-        );
-      },
-    },
-  ];
+  const onDeleteContact = (id) => {
+    dispatch(deleteContact(id));
+    toast.success("Contact successfully deleted!", {
+      position: "bottom-left",
+      autoClose: 3000,
+      closeOnClick: true,
+      theme: "colored",
+    });
+  };
 
   return (
     <Box
@@ -77,11 +57,52 @@ export default function ContactsGrid({ contacts }) {
         },
       }}
     >
-      <DataGrid
-        rows={0}
-        columns={columns}
-        components={{ Toolbar: GridToolbar }}
-      />
+      {contacts && (
+        <DataGrid
+          rows={contacts}
+          columns={[
+            {
+              field: "id",
+              headerName: "№",
+              width: 80,
+              sortable: false,
+              valueGetter: (params) => `${contacts.indexOf(params.row) + 1}`,
+            },
+            {
+              field: "name",
+              headerName: "Name",
+              flex: 1,
+              cellClassName: "name-column--cell",
+            },
+            {
+              field: "number",
+              headerName: "Phone Number",
+              flex: 1,
+            },
+            {
+              field: "action",
+              headerName: "Delete",
+              width: 180,
+              sortable: false,
+              disableClickEventBubbling: true,
+
+              renderCell: ({ row }) => {
+                return (
+                  <Button
+                    variant="outlined"
+                    color="error"
+                    size="small"
+                    onClick={() => onDeleteContact(row.id)}
+                  >
+                    Delete
+                  </Button>
+                );
+              },
+            },
+          ]}
+          components={{ Toolbar: GridToolbar }}
+        />
+      )}
     </Box>
   );
 }

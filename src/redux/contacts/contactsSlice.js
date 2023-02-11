@@ -1,36 +1,60 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { createSlice } from "@reduxjs/toolkit";
+import {
+  fetchContacts,
+  addContact,
+  deleteContact,
+} from "./contacts-operations";
 
-export const contactsApi = createApi({
-  reducerPath: "contacts",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "https://connections-api.herokuapp.com",
-  }),
-  tagTypes: ["Contacts"],
-  endpoints: (builder) => ({
-    getContacts: builder.query({
-      query: () => "/contacts",
-      providesTags: ["Contacts"],
-    }),
-    addContact: builder.mutation({
-      query: (values) => ({
-        url: "/contacts",
-        method: "POST",
-        body: values,
+const initialState = {
+  items: [],
+  isLoading: false,
+  error: null,
+};
+
+const contactsSlice = createSlice({
+  name: "contacts",
+  initialState,
+  extraReducers: (builder) =>
+    builder
+      .addCase(fetchContacts.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(fetchContacts.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items = action.payload;
+      })
+      .addCase(fetchContacts.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(addContact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(addContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        state.items.push(action.payload);
+      })
+      .addCase(addContact.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      .addCase(deleteContact.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(deleteContact.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.error = null;
+        const index = state.items.findIndex(
+          (item) => item.id === action.payload.id
+        );
+        state.items.splice(index, 1);
+      })
+      .addCase(deleteContact.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
       }),
-      invalidatesTags: ["Contacts"],
-    }),
-    deleteContact: builder.mutation({
-      query: (id) => ({
-        url: `/contacts/${id}`,
-        method: "DELETE",
-      }),
-      invalidatesTags: ["Contacts"],
-    }),
-  }),
 });
 
-export const {
-  useGetContactsQuery,
-  useAddContactMutation,
-  useDeleteContactMutation,
-} = contactsApi;
+export const contactsReducer = contactsSlice.reducer;

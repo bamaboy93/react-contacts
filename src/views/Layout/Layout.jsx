@@ -1,9 +1,10 @@
-import { Suspense } from "react";
+import { ToastContainer } from "react-toastify";
 import { Outlet } from "react-router-dom";
 import { Box } from "@mui/material";
 import { Main } from "./Layout.styled";
 import Appbar from "../../components/Appbar";
 import Sidebar from "../../components/Sidebar";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Layout() {
   return (
@@ -11,9 +12,19 @@ export default function Layout() {
       <Sidebar />
       <Main>
         <Appbar />
-        <Suspense fallback={null}>
-          <Outlet />
-        </Suspense>
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+        />
+        <Outlet />
       </Main>
     </Box>
   );
