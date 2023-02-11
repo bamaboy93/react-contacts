@@ -64,7 +64,7 @@ export default function ContactsGrid() {
             {
               field: "id",
               headerName: "№",
-              width: 80,
+              flex: 0.5,
               sortable: false,
               valueGetter: (params) => `${contacts.indexOf(params.row) + 1}`,
             },
@@ -82,16 +82,16 @@ export default function ContactsGrid() {
             {
               field: "action",
               headerName: "Delete",
-              width: 180,
+              flex: 0.5,
               sortable: false,
               disableClickEventBubbling: true,
 
               renderCell: ({ row }) => {
                 return (
                   <Button
-                    variant="outlined"
+                    variant="contained"
                     color="error"
-                    size="small"
+                    sx={{ width: "100%" }}
                     onClick={() => onDeleteContact(row.id)}
                   >
                     Delete
