@@ -4,9 +4,14 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import listPlugin from "@fullcalendar/list";
-import { Box, useTheme } from "@mui/system";
-import { Typography, List, ListItem, ListItemText } from "@mui/material";
+import {
+  Box,
+  Typography,
+  List,
+  ListItem,
+  ListItemText,
+  useTheme,
+} from "@mui/material";
 
 export default function Calendar() {
   const [currentEvents, setCurrentEvents] = useState([]);
@@ -73,16 +78,11 @@ export default function Calendar() {
       <Box flex="1 1 100%" ml="15px">
         <FullCalendar
           height="75vh"
-          plugins={[
-            dayGridPlugin,
-            interactionPlugin,
-            timeGridPlugin,
-            listPlugin,
-          ]}
+          plugins={[dayGridPlugin, interactionPlugin, timeGridPlugin]}
           headerToolbar={{
             left: "prev,next today",
             center: "title",
-            right: "dayGridMonth,timeGridWeek,timeGridDay,listMonth",
+            right: "dayGridMonth,timeGridWeek,timeGridDay",
           }}
           initialView="dayGridMonth"
           editable={true}

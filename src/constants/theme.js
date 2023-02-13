@@ -59,10 +59,18 @@ export const theme = createTheme({
     },
   },
   components: {
-    MuiPicker: {
+    MuiPaper: {
       styleOverrides: {
-        paper: {
-          backgroundColor: "#191919",
+        root: {
+          backgroundColor: "#112240",
+          color: "#6870fa",
+        },
+      },
+    },
+    MuiPickersDay: {
+      styleOverrides: {
+        root: {
+          backgroundColor: "transparent",
         },
       },
     },

@@ -12,7 +12,13 @@ export default function Appbar() {
     dispatch(logout());
   };
   return (
-    <Box display="flex" justifyContent="space-between" p={2} pl={4}>
+    <Box
+      display="flex"
+      justifyContent="space-between"
+      alignItems="center"
+      p={2}
+      pl={4}
+    >
       <ContactPhoneIcon fontSize="large" color="secondary" />
       <Box display="flex">
         <IconButton size="large" color="secondary">

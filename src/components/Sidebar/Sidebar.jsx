@@ -38,9 +38,6 @@ export default function Sidebar() {
         "& .pro-menu-item.active": {
           color: `${theme.palette.secondary.main} !important`,
         },
-        "& .pro-menu": {
-          pt: 0,
-        },
       }}
     >
       <ProSidebar collapsed={isCollapsed}>

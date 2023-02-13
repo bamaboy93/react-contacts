@@ -31,11 +31,6 @@ body {
   background-color: #0a192f;
   color: #ccd6f6;
 }
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
 
 ul {
   list-style: none;

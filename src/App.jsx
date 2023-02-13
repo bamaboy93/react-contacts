@@ -5,6 +5,7 @@ import Layout from "./views/Layout";
 import RestrictedRoute from "./components/Routes/RestrictedRoute";
 import PrivateRoute from "./components/Routes/PrivateRoute";
 import { fetchCurrentUser } from "./redux/auth/auth-operations";
+import { fetchContacts } from "./redux/contacts/contacts-operations";
 import { useAuth } from "./hooks/useAuth";
 import { LinearProgress } from "@mui/material";
 
@@ -20,6 +21,10 @@ const Login = lazy(() => import("./views/Login"));
 export default function App() {
   const dispatch = useDispatch();
   const { isRefreshing } = useAuth();
+
+  useEffect(() => {
+    dispatch(fetchContacts());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(fetchCurrentUser());

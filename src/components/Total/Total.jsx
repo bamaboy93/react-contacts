@@ -1,34 +1,31 @@
 import { useSelector } from "react-redux";
-import { Box, Paper, Typography, useTheme } from "@mui/material";
+import { Box, Paper, Typography } from "@mui/material";
 import { selectAllContacts } from "../../redux/contacts/contacts-selectors";
 
 export default function SimplePaper() {
-  const theme = useTheme();
   const contacts = useSelector(selectAllContacts);
   return (
     <Box
       sx={{
-        mb: 3,
-        "& > :not(style)": {
-          width: 350,
-          height: 128,
-        },
+        mb: { sm: 3 },
+        width: { xs: 1, sm: 350 },
       }}
     >
       <Paper
         elevation={3}
         sx={{
-          backgroundColor: `${theme.palette.background.add} !important`,
+          backgroundColor: "background.add",
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          p: 1,
         }}
       >
         <Typography
           sx={{
             fontWeight: "bold",
-            fontSize: 28,
-            color: `${theme.palette.primary.main}`,
+            fontSize: { xs: 24, sm: 28 },
+            color: "primary.main",
           }}
         >
           Total contacts:
@@ -38,8 +35,8 @@ export default function SimplePaper() {
               sx={{
                 ml: 2,
                 fontWeight: "bold",
-                fontSize: 32,
-                color: `${theme.palette.secondary.main}`,
+                fontSize: { xs: 28, sm: 32 },
+                color: "secondary.main",
               }}
             >
               {contacts.length}
@@ -51,7 +48,7 @@ export default function SimplePaper() {
                 ml: 2,
                 fontWeight: "bold",
                 fontSize: 32,
-                color: `${theme.palette.secondary.main}`,
+                color: "secondary.main",
               }}
             >
               0

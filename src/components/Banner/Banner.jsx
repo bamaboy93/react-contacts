@@ -5,13 +5,10 @@ export default function Banner() {
   return (
     <Box
       sx={{
-        backgroundImage: `url(${banner})`,
-        backgroundSize: "contain",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
-        width: 750,
-        height: 550,
+        display: { xs: "none", md: "block" },
       }}
-    />
+    >
+      <img src={banner} alt="banner" width={540} height={540} />
+    </Box>
   );
 }

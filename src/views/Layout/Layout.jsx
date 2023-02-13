@@ -8,7 +8,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 export default function Layout() {
   return (
-    <Box display="flex" position="relative">
+    <Box display="flex" position="relative" overflow="hidden">
       <Sidebar />
       <Main>
         <Appbar />

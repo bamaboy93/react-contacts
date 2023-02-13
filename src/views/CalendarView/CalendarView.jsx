@@ -1,13 +1,16 @@
-import { Box } from "@mui/material";
-
+import { useMediaQuery } from "@mui/material";
+import Section from "../../components/Section";
 import Header from "../../components/Header";
 import Calendar from "../../components/Calendar";
+import CalendarMobile from "../../components/CalendarMobile";
 
 export default function CalendarView() {
+  const isDesktop = useMediaQuery("(min-width:767px)");
+
   return (
-    <Box m="0 30px 20px 30px">
+    <Section>
       <Header title="Calendar" />
-      <Calendar />
-    </Box>
+      {isDesktop ? <Calendar /> : <CalendarMobile />}
+    </Section>
   );
 }
