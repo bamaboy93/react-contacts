@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_contacts=self.webpackChunkreact_contacts||[]).push([[148],{1959:function(t,a,n){n.r(a),n.d(a,{default:function(){return u}});var c=n(4554),e=n.p+"static/media/404.31faa311b01a92dfd415.png",r=n(3329);function u(){return(0,r.jsx)(c.Z,{sx:{m:"0 auto",height:"80vh",backgroundImage:"url(".concat(e,")"),backgroundSize:"contain",backgroundPosition:"center",backgroundRepeat:"no-repeat"}})}}}]);
+//# sourceMappingURL=148.d5ffba1a.chunk.js.map
