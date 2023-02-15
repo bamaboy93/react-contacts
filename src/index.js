@@ -17,7 +17,7 @@ root.render(
       <CssBaseline />
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <BrowserRouter>
+          <BrowserRouter basename="/react-contacts">
             <App />
           </BrowserRouter>
         </PersistGate>
