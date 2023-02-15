@@ -4,20 +4,13 @@ import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import timeGridPlugin from "@fullcalendar/timegrid";
-import {
-  Box,
-  Typography,
-  List,
-  ListItem,
-  ListItemText,
-  useTheme,
-} from "@mui/material";
+import { Box, Typography, List, ListItem, ListItemText } from "@mui/material";
 
 export default function Calendar() {
   const [currentEvents, setCurrentEvents] = useState([]);
-  const theme = useTheme();
+
   const handleDateClick = (selected) => {
-    const title = prompt("Please enter a new title for your event");
+    const title = prompt("Please enter title for your event");
     const calendarApi = selected.view.calendar;
     calendarApi.unselect();
 
@@ -43,11 +36,7 @@ export default function Calendar() {
   };
   return (
     <Box display="flex" justifyContent="space-between">
-      <Box
-        flex="1 1 20%"
-        p="15px"
-        backgroundColor={`${theme.palette.background.add}`}
-      >
+      <Box flex="1 1 20%" p="15px" backgroundColor="background.add">
         <Typography variant="h5">Events</Typography>
         <List>
           {currentEvents.map((event) => (

@@ -1,13 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Box, Button } from "@mui/material";
+import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
-import { useTheme } from "@mui/material";
 import { selectAllContacts } from "../../redux/contacts/contacts-selectors";
 import { deleteContact } from "../../redux/contacts/contacts-operations";
+import { Wrapper } from "./ContactsGrid.styled";
 
 export default function ContactsGrid() {
-  const theme = useTheme();
   const dispatch = useDispatch();
   const contacts = useSelector(selectAllContacts);
 
@@ -22,41 +21,7 @@ export default function ContactsGrid() {
   };
 
   return (
-    <Box
-      mt={6}
-      height="70vh"
-      sx={{
-        "& .MuiDataGrid-root": {
-          border: "none",
-        },
-
-        "& .MuiDataGrid-row": {
-          fontWeight: 700,
-          fontSize: 14,
-        },
-        "& .name-column--cell": {
-          color: `${theme.palette.secondary.main} `,
-        },
-        "& .MuiDataGrid-columnHeaders": {
-          backgroundColor: `${theme.palette.secondary.dark}`,
-          borderBottom: "none",
-          fontSize: 14,
-        },
-        "& .MuiDataGrid-virtualScroller": {
-          backgroundColor: `${theme.palette.background.add} !important`,
-        },
-        "& .MuiDataGrid-footerContainer": {
-          borderTop: "none",
-          backgroundColor: `${theme.palette.secondary.dark} `,
-        },
-        "& .MuiCheckbox-root": {
-          color: `${theme.palette.secondary.main} !important`,
-        },
-        "& .MuiDataGrid-toolbarContainer .MuiButton-text": {
-          color: `${theme.palette.primary.main} !important`,
-        },
-      }}
-    >
+    <Wrapper>
       {contacts && (
         <DataGrid
           rows={contacts}
@@ -103,6 +68,6 @@ export default function ContactsGrid() {
           components={{ Toolbar: GridToolbar }}
         />
       )}
-    </Box>
+    </Wrapper>
   );
 }

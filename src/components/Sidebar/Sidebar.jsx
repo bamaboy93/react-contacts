@@ -1,50 +1,33 @@
 import { useState } from "react";
 import { useSelector } from "react-redux";
 import { ProSidebar, Menu, MenuItem } from "react-pro-sidebar";
-import { Avatar, Box, IconButton, Typography, useTheme } from "@mui/material";
-import HomeOutlinedIcon from "@mui/icons-material/HomeOutlined";
-import ContactsOutlinedIcon from "@mui/icons-material/ContactsOutlined";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
-import CalendarTodayOutlinedIcon from "@mui/icons-material/CalendarTodayOutlined";
-import HelpOutlineOutlinedIcon from "@mui/icons-material/HelpOutlineOutlined";
-import BarChartOutlinedIcon from "@mui/icons-material/BarChartOutlined";
-import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
+import { Avatar, Box, IconButton, Typography } from "@mui/material";
+import {
+  HomeOutlined,
+  ContactsOutlined,
+  AddBoxOutlined,
+  HelpOutlineOutlined,
+  BarChartOutlined,
+  MenuOutlined,
+  CalendarTodayOutlined,
+} from "@mui/icons-material";
 import "react-pro-sidebar/dist/css/styles.css";
 import Item from "./SidebarItem";
 import { getUser } from "../../redux/auth/auth-selectors";
+import { Wrapper } from "./Sidebar.styled";
 
 export default function Sidebar() {
-  const theme = useTheme();
   const username = useSelector(getUser);
   const [isCollapsed, setIsCollapsed] = useState(true);
   const [selected, setSelected] = useState("Dashboard");
 
   return (
-    <Box
-      sx={{
-        "& .pro-sidebar-inner": {
-          background: `${theme.palette.background.add} !important`,
-          height: "100vh",
-        },
-        "& .pro-icon-wrapper": {
-          backgroundColor: "transparent !important",
-        },
-        "& .pro-menu-item": {
-          margin: "0 0 10px 0 !important",
-        },
-        "& .pro-inner-item:hover": {
-          color: "#868dfb !important",
-        },
-        "& .pro-menu-item.active": {
-          color: `${theme.palette.secondary.main} !important`,
-        },
-      }}
-    >
+    <Wrapper>
       <ProSidebar collapsed={isCollapsed}>
         <Menu iconShape="square">
           <MenuItem
             onClick={() => setIsCollapsed(!isCollapsed)}
-            icon={isCollapsed ? <MenuOutlinedIcon /> : undefined}
+            icon={isCollapsed ? <MenuOutlined /> : undefined}
             style={{
               margin: "10px 0 20px 0",
             }}
@@ -63,7 +46,7 @@ export default function Sidebar() {
                   color="secondary"
                   onClick={() => setIsCollapsed(!isCollapsed)}
                 >
-                  <MenuOutlinedIcon />
+                  <MenuOutlined />
                 </IconButton>
               </Box>
             )}
@@ -91,8 +74,8 @@ export default function Sidebar() {
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
               title="Dashboard"
-              to="/dashboard"
-              icon={<HomeOutlinedIcon />}
+              to="/"
+              icon={<HomeOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -108,14 +91,14 @@ export default function Sidebar() {
             <Item
               title="Contacts"
               to="/contacts"
-              icon={<ContactsOutlinedIcon />}
+              icon={<ContactsOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="Add Contact"
               to="/add"
-              icon={<AddBoxOutlinedIcon />}
+              icon={<AddBoxOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -131,14 +114,14 @@ export default function Sidebar() {
             <Item
               title="Calendar"
               to="/calendar"
-              icon={<CalendarTodayOutlinedIcon />}
+              icon={<CalendarTodayOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
             <Item
               title="FAQ Page"
               to="/faq"
-              icon={<HelpOutlineOutlinedIcon />}
+              icon={<HelpOutlineOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
@@ -153,13 +136,13 @@ export default function Sidebar() {
             <Item
               title="Bar Chart"
               to="/bar"
-              icon={<BarChartOutlinedIcon />}
+              icon={<BarChartOutlined />}
               selected={selected}
               setSelected={setSelected}
             />
           </Box>
         </Menu>
       </ProSidebar>
-    </Box>
+    </Wrapper>
   );
 }

@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
-import { Button, TextField, Box, Grid } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { Button, TextField, Box, Grid, styled } from "@mui/material";
 import { register } from "../../redux/auth/auth-operations";
 
 export default function SignUpForm() {
@@ -50,6 +50,7 @@ export default function SignUpForm() {
       }) => (
         <Box component="form" onSubmit={handleSubmit} noValidate sx={{ mt: 1 }}>
           <TextField
+            variant="filled"
             margin="normal"
             fullWidth
             id="name"
@@ -62,6 +63,7 @@ export default function SignUpForm() {
             helperText={touched.name && errors.name}
           />
           <TextField
+            variant="filled"
             margin="normal"
             fullWidth
             id="email"
@@ -74,6 +76,7 @@ export default function SignUpForm() {
             helperText={touched.email && errors.email}
           />
           <TextField
+            variant="filled"
             margin="normal"
             fullWidth
             onChange={handleChange}
@@ -98,9 +101,9 @@ export default function SignUpForm() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="/login" variant="body2">
+              <RedirectLink to="/login" variant="body2">
                 Already registred? Login
-              </Link>
+              </RedirectLink>
             </Grid>
           </Grid>
         </Box>
@@ -108,3 +111,8 @@ export default function SignUpForm() {
     </Formik>
   );
 }
+
+const RedirectLink = styled(NavLink)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontSize: 14,
+}));

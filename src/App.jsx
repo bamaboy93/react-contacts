@@ -37,7 +37,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route
-            path="dashboard"
+            index
             element={
               <PrivateRoute component={<Dashboard />} redirectTo={"/login"} />
             }
@@ -76,15 +76,11 @@ export default function App() {
         </Route>
         <Route
           path="signup"
-          element={
-            <RestrictedRoute component={<SignUp />} redirectTo={"/dashboard"} />
-          }
+          element={<RestrictedRoute component={<SignUp />} redirectTo={"/"} />}
         />
         <Route
           path="login"
-          element={
-            <RestrictedRoute component={<Login />} redirectTo={"/dashboard"} />
-          }
+          element={<RestrictedRoute component={<Login />} redirectTo={"/"} />}
         />
       </Routes>
     </Suspense>

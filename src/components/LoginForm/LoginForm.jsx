@@ -1,8 +1,8 @@
 import { useDispatch } from "react-redux";
 import { Formik } from "formik";
 import * as yup from "yup";
-import { Link } from "react-router-dom";
-import { Button, TextField, Box, Grid } from "@mui/material";
+import { NavLink } from "react-router-dom";
+import { Button, TextField, Box, Grid, styled } from "@mui/material";
 import { login } from "../../redux/auth/auth-operations";
 
 export default function LoginForm() {
@@ -80,7 +80,9 @@ export default function LoginForm() {
           </Button>
           <Grid container>
             <Grid item>
-              <Link to="/signup">Don't have an account? Sign Up!</Link>
+              <RedirectLink color="primary" to="/signup">
+                Don't have an account? Sign Up!
+              </RedirectLink>
             </Grid>
           </Grid>
         </Box>
@@ -88,3 +90,8 @@ export default function LoginForm() {
     </Formik>
   );
 }
+
+const RedirectLink = styled(NavLink)(({ theme }) => ({
+  color: theme.palette.primary.main,
+  fontSize: 14,
+}));

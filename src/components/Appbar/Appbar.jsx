@@ -1,9 +1,10 @@
 import { useDispatch } from "react-redux";
 import { Box, IconButton, Badge, Button } from "@mui/material";
-import NotificationsOutlinedIcon from "@mui/icons-material/NotificationsOutlined";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-
-import ContactPhoneIcon from "@mui/icons-material/ContactPhone";
+import {
+  NotificationsOutlined,
+  SettingsOutlined,
+  ContactPhone,
+} from "@mui/icons-material";
 import { logout } from "../../redux/auth/auth-operations";
 
 export default function Appbar() {
@@ -19,15 +20,15 @@ export default function Appbar() {
       p={2}
       pl={4}
     >
-      <ContactPhoneIcon fontSize="large" color="secondary" />
+      <ContactPhone fontSize="large" color="secondary" />
       <Box display="flex">
         <IconButton size="large" color="secondary">
           <Badge badgeContent={1} color="error">
-            <NotificationsOutlinedIcon />
+            <NotificationsOutlined />
           </Badge>
         </IconButton>
         <IconButton size="large" color="secondary">
-          <SettingsOutlinedIcon />
+          <SettingsOutlined />
         </IconButton>
         <Button size="large" color="secondary" onClick={onLogOut}>
           LOGOUT
