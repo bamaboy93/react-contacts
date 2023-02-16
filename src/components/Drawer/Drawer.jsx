@@ -62,13 +62,13 @@ export default function MobileDrawer() {
         onClose={toggleDrawer(anchor, false)}
       >
         <Box
-          sx={{ width: 50 }}
+          sx={{ width: 65 }}
           onClick={toggleDrawer(anchor, false)}
           onKeyDown={toggleDrawer(anchor, false)}
         >
           <List>
             <ListItem disablePadding sx={{ mb: 6 }}>
-              <ListItemButton>
+              <ListItemButton sx={{ justifyContent: "center" }}>
                 <ListItemIcon sx={{ color: "secondary.light", minWidth: 0 }}>
                   <MenuOutlined />
                 </ListItemIcon>
@@ -77,7 +77,11 @@ export default function MobileDrawer() {
 
             {navItems.map(({ href, icon }) => (
               <ListItem key={href} disablePadding sx={{ mb: 4 }}>
-                <ListItemButton component={Link} to={href}>
+                <ListItemButton
+                  sx={{ justifyContent: "center" }}
+                  component={Link}
+                  to={href}
+                >
                   <ListItemIcon sx={{ color: "secondary.dark", minWidth: 0 }}>
                     {icon}
                   </ListItemIcon>

@@ -14,6 +14,7 @@ const Contacts = lazy(() => import("./views/Contacts"));
 const AddContact = lazy(() => import("./views/AddContact"));
 const CalendarView = lazy(() => import("./views/CalendarView"));
 const Faq = lazy(() => import("./views/Faq"));
+const Charts = lazy(() => import("./views/Charts"));
 const NotFound = lazy(() => import("./views/NotFound"));
 const SignUp = lazy(() => import("./views/SignUp"));
 const Login = lazy(() => import("./views/Login"));
@@ -66,6 +67,12 @@ export default function App() {
           <Route
             path="faq"
             element={<PrivateRoute component={<Faq />} redirectTo={"/login"} />}
+          />
+          <Route
+            path="charts"
+            element={
+              <PrivateRoute component={<Charts />} redirectTo={"/login"} />
+            }
           />
           <Route
             path="*"

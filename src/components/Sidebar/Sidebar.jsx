@@ -135,7 +135,7 @@ export default function Sidebar() {
             </Typography>
             <Item
               title="Bar Chart"
-              to="/bar"
+              to="/charts"
               icon={<BarChartOutlined />}
               selected={selected}
               setSelected={setSelected}

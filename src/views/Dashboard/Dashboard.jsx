@@ -1,11 +1,13 @@
-import { Box } from "@mui/material";
+import { Box, useMediaQuery } from "@mui/material";
 import Section from "../../components/Section";
 import Banner from "../../components/Banner";
 import CalendarMin from "../../components/CalendarMin";
 import Header from "../../components/Header";
 import Total from "../../components/Total";
+import Quote from "../../components/Quote";
 
 export default function Dashboard() {
+  const isMobile = useMediaQuery("(max-width:600px)");
   return (
     <Section>
       <Header title="DASHBOARD" subtitle="Welcome to your dashboard" />
@@ -18,6 +20,7 @@ export default function Dashboard() {
         <Banner />
         <Box>
           <Total />
+          {isMobile && <Quote />}
           <CalendarMin />
         </Box>
       </Box>

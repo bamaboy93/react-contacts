@@ -7,7 +7,7 @@ export default function SimplePaper() {
   return (
     <Box
       sx={{
-        mb: { sm: 3 },
+        mb: 3,
         width: { xs: 1, sm: 350 },
       }}
     >
@@ -15,18 +15,15 @@ export default function SimplePaper() {
         elevation={3}
         sx={{
           backgroundColor: "background.add",
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
+          textAlign: { sm: "center" },
           p: 1,
         }}
       >
         <Typography
           sx={{
-            fontWeight: "bold",
-            fontSize: { xs: 24, sm: 28 },
             color: "primary.main",
           }}
+          variant="h2"
         >
           Total contacts:
           {contacts ? (
