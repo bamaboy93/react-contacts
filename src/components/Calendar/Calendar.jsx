@@ -45,7 +45,7 @@ export default function Calendar() {
               sx={{
                 margin: "10px 0",
                 borderRadius: "2px",
-                backgroundColor: "secondary.dark",
+                backgroundColor: "secondary.light",
               }}
             >
               <ListItemText

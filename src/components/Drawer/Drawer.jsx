@@ -30,7 +30,7 @@ export default function MobileDrawer() {
     { href: "/add", icon: <AddBoxOutlined /> },
     { href: "/calendar", icon: <CalendarTodayOutlined /> },
     { href: "/faq", icon: <HelpOutlineOutlined /> },
-    { href: "/bar", icon: <BarChartOutlined /> },
+    { href: "/charts", icon: <BarChartOutlined /> },
   ];
 
   const toggleDrawer = (anchor, open) => (event) => {
@@ -50,7 +50,7 @@ export default function MobileDrawer() {
         onClick={toggleDrawer(anchor, true)}
         size="large"
         edge="start"
-        color="inherit"
+        color="secondary"
         aria-label="menu"
         sx={{ mr: 2 }}
       >
@@ -69,7 +69,7 @@ export default function MobileDrawer() {
           <List>
             <ListItem disablePadding sx={{ mb: 6 }}>
               <ListItemButton sx={{ justifyContent: "center" }}>
-                <ListItemIcon sx={{ color: "secondary.light", minWidth: 0 }}>
+                <ListItemIcon sx={{ color: "secondary", minWidth: 0 }}>
                   <MenuOutlined />
                 </ListItemIcon>
               </ListItemButton>

@@ -18,7 +18,7 @@ export default function Quote() {
         <Typography sx={{ mb: 4, color: "primary.main" }} variant="h3">
           Quote of the day:
         </Typography>
-        <Typography sx={{ mb: 2 }} variant="h2">
+        <Typography sx={{ mb: 2, color: "secondary.main" }} variant="h2">
           {quote.quote}
         </Typography>
         <Typography

@@ -18,12 +18,12 @@ export default function Pie() {
         borderWidth={1}
         borderColor={{ theme: "background" }}
         arcLinkLabelsSkipAngle={10}
-        arcLinkLabelsTextColor="#fff"
+        arcLinkLabelsTextColor="#676767"
         arcLinkLabelsThickness={4}
         arcLinkLabelsColor={{ from: "color" }}
         arcLabel="value"
         arcLabelsSkipAngle={12}
-        arcLabelsTextColor="#fff"
+        arcLabelsTextColor="#676767"
         legends={[
           {
             anchor: "bottom",
@@ -34,10 +34,10 @@ export default function Pie() {
             itemsSpacing: 0,
             itemWidth: 100,
             itemHeight: 18,
-            itemTextColor: "#fff",
+            itemTextColor: "#676767",
             itemDirection: "left-to-right",
             itemOpacity: 1,
-            symbolSize: 18,
+            symbolSize: 24,
             symbolShape: "circle",
           },
         ]}

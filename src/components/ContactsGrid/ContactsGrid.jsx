@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "@mui/material";
 import { toast } from "react-toastify";
 import { DataGrid, GridToolbar } from "@mui/x-data-grid";
+import DeleteIcon from "@mui/icons-material/Delete";
 import { selectAllContacts } from "../../redux/contacts/contacts-selectors";
 import { deleteContact } from "../../redux/contacts/contacts-operations";
 import { Wrapper } from "./ContactsGrid.styled";
@@ -29,9 +30,12 @@ export default function ContactsGrid() {
             {
               field: "id",
               headerName: "№",
-              flex: 0.5,
               sortable: false,
+              width: 30,
+              minWidth: 30,
+              MaxWidth: 30,
               valueGetter: (params) => `${contacts.indexOf(params.row) + 1}`,
+              cellClassName: "name-column--id",
             },
             {
               field: "name",
@@ -41,7 +45,7 @@ export default function ContactsGrid() {
             },
             {
               field: "number",
-              headerName: "Phone Number",
+              headerName: "Number",
               flex: 1,
             },
             {
@@ -56,10 +60,10 @@ export default function ContactsGrid() {
                   <Button
                     variant="contained"
                     color="error"
-                    sx={{ width: "100%" }}
+                    sx={{ minWidth: "40px", width: { xs: "50px", sm: 1 } }}
                     onClick={() => onDeleteContact(row.id)}
                   >
-                    Delete
+                    <DeleteIcon />
                   </Button>
                 );
               },

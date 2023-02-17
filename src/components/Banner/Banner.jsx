@@ -8,7 +8,7 @@ export default function Banner() {
         display: { xs: "none", md: "block" },
       }}
     >
-      <img src={banner} alt="banner" width={540} height={540} />
+      <img src={banner} alt="banner" width={520} height={520} />
     </Box>
   );
 }

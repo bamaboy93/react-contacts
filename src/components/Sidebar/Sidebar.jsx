@@ -30,6 +30,7 @@ export default function Sidebar() {
             icon={isCollapsed ? <MenuOutlined /> : undefined}
             style={{
               margin: "10px 0 20px 0",
+              
             }}
           >
             {!isCollapsed && (
@@ -73,6 +74,7 @@ export default function Sidebar() {
 
           <Box paddingLeft={isCollapsed ? undefined : "10%"}>
             <Item
+              sx={{ color: "primary.light" }}
               title="Dashboard"
               to="/"
               icon={<HomeOutlined />}
@@ -134,7 +136,7 @@ export default function Sidebar() {
               Charts
             </Typography>
             <Item
-              title="Bar Chart"
+              title="Charts"
               to="/charts"
               icon={<BarChartOutlined />}
               selected={selected}

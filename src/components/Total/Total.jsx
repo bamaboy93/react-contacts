@@ -21,7 +21,7 @@ export default function SimplePaper() {
       >
         <Typography
           sx={{
-            color: "primary.main",
+            color: "secondary.main",
           }}
           variant="h2"
         >
@@ -33,7 +33,7 @@ export default function SimplePaper() {
                 ml: 2,
                 fontWeight: "bold",
                 fontSize: { xs: 28, sm: 32 },
-                color: "secondary.main",
+                color: "primary.main",
               }}
             >
               {contacts.length}
@@ -44,8 +44,8 @@ export default function SimplePaper() {
               sx={{
                 ml: 2,
                 fontWeight: "bold",
-                fontSize: 32,
-                color: "secondary.main",
+                fontSize: { xs: 28, sm: 32 },
+                color: "primary.dark",
               }}
             >
               0

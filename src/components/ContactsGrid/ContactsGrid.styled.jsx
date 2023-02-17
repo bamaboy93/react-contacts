@@ -1,7 +1,7 @@
 import { Box, styled } from "@mui/material";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
-  marginTop: theme.spacing(6),
+  marginTop: theme.spacing(4),
   height: "70vh",
 
   "& .MuiDataGrid-root": {
@@ -15,17 +15,20 @@ export const Wrapper = styled(Box)(({ theme }) => ({
   "& .name-column--cell": {
     color: theme.palette.secondary.main,
   },
+  "& .name-column--id": {
+    color: theme.palette.primary.main,
+  },
   "& .MuiDataGrid-columnHeaders": {
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
     borderBottom: "none",
     fontSize: 14,
   },
   "& .MuiDataGrid-virtualScroller": {
-    backgroundColor: theme.palette.background.add,
+    backgroundColor: theme.palette.background.table,
   },
   "& .MuiDataGrid-footerContainer": {
     borderTop: "none",
-    backgroundColor: theme.palette.secondary.dark,
+    backgroundColor: theme.palette.secondary.main,
   },
   "& .MuiCheckbox-root": {
     color: theme.palette.secondary.main,
